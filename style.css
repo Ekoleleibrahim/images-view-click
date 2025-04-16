@@ -1,0 +1,135 @@
+*,::before,::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: sans-serif;
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    background-color: #f1f1f1;
+}
+
+.container {
+    max-width: 600px;
+    width: 100%;
+    overflow: hidden;
+    margin: 0 20px;
+    border: 5px solid white;
+    box-shadow: 0 0 2px black;
+}
+
+a{
+    display: inline-block;
+    padding: 8px 24px;
+    border-radius: 30px;
+    color: white;
+    background-color: black;
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+h1{
+    font-size: 24px;
+    color: white;
+    margin-bottom: 8px;
+}
+p{
+    font-size: 14px;
+    color: white;
+}
+
+.text-hidden{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    opacity: 0;
+    transition: all 300ms linear;
+}
+
+section{
+    width: 100%;
+    height: 250px;
+    transition: transform 500ms linear;
+    display: grid;
+    place-items: center;
+    position: relative;
+    z-index: 1;
+}
+section:nth-child(1){
+    transform-origin: left top;
+}
+section:nth-child(2){
+    transform-origin: right top;
+}
+section:nth-child(3){
+    transform-origin: left bottom;
+}
+section:nth-child(4){
+    transform-origin: right bottom;
+}
+
+input{
+    display: none;
+}
+label{
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0 ;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;    
+}
+
+section:nth-child(1):has(:checked){
+    transform: scaleX(2.1) scaleY(2.1);
+    z-index: 2;
+}  
+section:nth-child(2):has(:checked){
+    transform: scaleX(2.1) scaleY(2.1);
+    z-index: 2;
+} 
+section:nth-child(3):has(:checked){
+    transform: scaleX(2.1) scaleY(2.1);
+    z-index: 2;
+}
+section:nth-child(4):has(:checked){
+    transform: scaleX(2.1) scaleY(2.1);
+    z-index: 2;
+}
+
+input:checked ~ .text-hidden{
+    opacity: 1;
+}
+
+
+.grid-ctn{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+
+@media screen and (max-width: 640px){
+    .grid-ctn{
+        display: grid;
+        grid-template-columns: 100%;
+    }
+    section:has(:checked){
+        transform: scale(1) !important;
+        transform-origin: 50% 50%;
+    }
+}
